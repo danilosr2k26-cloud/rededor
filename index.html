@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rede D'Or – Apps no Google Play</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--green:#01875f;--text:#202124;--muted:#5f6368;--border:#dadce0;--hover:#f1f3f4;}
+body{font-family:"Google Sans","Roboto","Helvetica Neue",Arial,sans-serif;background:#fff;color:var(--text);}
+a{color:inherit;text-decoration:none;cursor:default;}
+button{font-family:inherit;cursor:default;border:none;background:none;}
+.icn{vertical-align:-4px;}
+.logicon{width: 10%;}
+/* ===== topo ===== */
+header.top{display:flex;align-items:center;gap:4px;padding:4px 16px;height:56px;position:sticky;top:0;background:#fff;z-index:40;}
+.iconbtn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.iconbtn svg{width:22px;height:22px;fill:#5f6368;}
+.logo{display:flex;align-items:center;gap:7px;margin-right:10px;user-select:none;padding:0 8px;}
+.logo span{font-size:20px;font-weight:500;letter-spacing:-.3px;}
+.search{flex:1;max-width:640px;display:flex;align-items:center;background:#f8f9fa;border-radius:24px;height:42px;padding:0 14px;}
+.search input{flex:1;border:none;outline:none;background:transparent;font-size:14px;margin-left:8px;}
+.search svg{width:18px;height:18px;fill:#5f6368;}
+.avatar{margin-left:auto;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#8ab4f8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.tabrow{display:flex;gap:8px;justify-content:center;border-bottom:1px solid var(--border);padding-bottom:10px;font-size:15px;color:var(--muted);}
+.tabrow span{padding:6px 16px;border-radius:16px;}
+.tabrow .on{background:#d2e3fc;color:#1967d2;font-weight:500;}
+
+/* ===== cabeçalho do app ===== */
+main{max-width:1000px;margin:0 auto;padding:26px 24px 60px;}
+.apphead{display:flex;gap:26px;flex-wrap:wrap;}
+.appicon{width:142px;height:142px;border-radius:26px;object-fit:cover;flex-shrink:0;box-shadow:0 1px 3px rgba(60,64,67,.25);}
+.info{flex:1;min-width:280px;}
+.appname{font-size:34px;font-weight:500;letter-spacing:-.4px;line-height:1.15;}
+.dev{color:var(--green);font-weight:500;font-size:15px;margin-top:3px;}
+.stats{display:flex;align-items:center;margin:18px 0 8px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;}
+.stat{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 12px;position:relative;}
+.stat + .stat::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--border);}
+.stat b{font-size:14px;font-weight:500;}
+.stat i{font-style:normal;font-size:12px;color:var(--muted);}
+.stars{position:relative;font-size:15px;line-height:1;height:18px;}
+.stars .b{color:#dadce0;}
+.stars .f{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:#fbbc04;width:88%;}
+.pegi{display:inline-flex;align-items:center;gap:2px;border:1px solid #a9adae;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;color:#3c4043;}
+
+/* botões secundários (decorativos) */
+.btns2{display:flex;gap:10px;margin:14px 0 12px;flex-wrap:wrap;}
+.btn2{height:44px;border-radius:22px;font-size:14px;font-weight:500;color:var(--green);display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;}
+
+/* botão instalar: linha própria, sempre visível */
+.btn-install{width:100%;height:50px;border-radius:25px;background:var(--green);color:#fff;font-size:16px;font-weight:500;position:relative;overflow:hidden;margin-bottom:24px;}
+.btn-install .prog{position:absolute;inset:0;width:0%;background:#016b4d;transition:width .2s linear;}
+.btn-install span{position:relative;z-index:1;}
+
+/* ===== mídia ===== */
+.media{margin:26px 0;}
+.strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;}
+.shot{min-width:300px;height:168px;border-radius:12px;object-fit:cover;box-shadow:0 1px 3px rgba(60,64,67,.25);background:#eef1f2;}
+.dots{display:flex;gap:8px;margin-top:10px;}
+.dots i{width:8px;height:8px;border-radius:50%;background:#dadce0;font-style:normal;}
+.dots i.on{background:var(--text);}
+
+/* ===== seções ===== */
+section.blk{margin:30px 0;}
+.blk > .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.blk h2{font-size:22px;font-weight:500;}
+.arrow{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.arrow svg{width:20px;height:20px;fill:#5f6368;}
+#about p{font-size:14px;line-height:1.65;color:#3c4043;white-space:pre-wrap;max-width:860px;}
+.datarow{display:flex;gap:24px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.datacell{display:flex;flex-direction:column;gap:2px;min-width:90px;}
+.datacell svg{width:26px;height:26px;fill:#5f6368;margin-bottom:4px;}
+.datacell b{font-size:15px;font-weight:500;}
+.datacell i{font-style:normal;font-size:11px;color:var(--muted);}
+.safety ul{list-style:none;}
+.safety li{display:flex;align-items:flex-start;gap:16px;margin:18px 0;max-width:640px;}
+.safety svg{width:24px;height:24px;fill:#5f6368;flex-shrink:0;margin-top:2px;}
+.safety b{font-size:14px;font-weight:500;display:block;}
+.safety .sub{font-size:13px;color:#5f6368;}
+.news li{font-size:14px;line-height:1.7;color:#3c4043;margin-left:20px;}
+.news .ver{font-size:14px;color:var(--muted);margin-bottom:8px;}
+suprow{display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--border);font-size:14px;}
+.suprow svg{width:18px;height:18px;fill:#5f6368;flex-shrink:0;}
+.suprow .k{color:var(--muted);min-width:170px;}
+.devt td{padding:8px 14px;font-size:14px;vertical-align:top;line-height:1.5;}
+.devt td.k{color:var(--muted);width:180px;white-space:nowrap;}
+footer{border-top:1px solid var(--border);margin-top:50px;padding:22px;text-align:center;font-size:12px;color:var(--muted);}
+@media(max-width:600px){
+  .apphead{flex-direction:column;align-items:flex-start;}
+  .appname{font-size:28px;}
+  main{padding:18px 16px 40px;}
+  .shot{min-width:230px;height:130px;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="iconbtn"><svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg></span>
+  <span class="logo">
+    <img class="logicon" alt="Imagem do ícone" src="./img/logplay.png">
+    <span style="color: gray;">Google Play</span>
+  </span>
+  <!-- <span class="search">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7 14 5 12 5 9.5S7 5 9.5 5 14 7 14 9.5 12 14 9.5 14z"/></svg>
+    <input type="text" placeholder="Pesquisar aplicativos e jogos">
+  </span> -->
+  <span class="iconbtn"><svg viewBox="0 0 25 25"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8a4 4 0 1 1 8 0c0 .88-.36 1.68-.93 2.25z"/></svg></span>
+  <!-- <span class="avatar">U</span> -->
+</header>
+<nav class="tabrow"><span>Jogos</span><span class="on">Apps</span><span>Livros</span><span>Crianças</span></nav>
+
+<main>
+  <!-- cabeçalho -->
+  <div class="apphead">
+    <img class="appicon" alt="Imagem do ícone" src="./img/icone.png">
+    <div class="info">
+      <h1 class="appname">Rede D'Or</h1>
+      <div class="dev">Rede D'Or</div>
+      <div class="stats">
+        <div class="stat">
+          <span class="stars"><span class="b">★★★★★</span><span class="f">★★★★★</span></span>
+          <i>4,4</i>
+        </div>
+        <div class="stat"><b>500 mil+</b><i>downloads</i></div>
+        <div class="stat"><span class="pegi">PEGI 3</span><i>3 anos</i></div>
+      </div>
+      <div class="btns2">
+        <span class="btn2"><svg class="icn" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>Compartilhar</span>
+        <span class="btn2"><svg class="icn" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>Adicionar à lista de desejos</span>
+      </div>
+      <button class="btn-install" id="installBtn" onclick="doInstall()"><div class="prog" id="prog"></div><span id="installLbl">Instalar</span></button>
+    </div>
+  </div>
+
+  <!-- capturas de tela -->
+  <div class="media">
+    <div class="strip" id="strip"></div>        
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <!-- sobre -->
+  <section class="blk">
+    <div class="hd"><h2>Sobre este app</h2><span class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span></div>
+    <p id="about">O aplicativo Rede D’Or reúne, em um só lugar, as principais informações e serviços da sua saúde, com acesso digital e seguro. Com ele, você pode agendar consultas e exames, acompanhar seus atendimentos e acessar resultados de exames online assim que estiverem disponíveis. Também é possível compartilhar exames e laudos com médicos da sua confiança e receber lembretes importantes para o acompanhamento da sua saúde. Suas informações de saúde ficam organizadas para acesso rápido, a qualquer hora, de onde você estiver.
+O que você pode fazer no aplicativo Rede D’Or:
+- Agendar consultas e exames
+- Acessar resultados de exames online, assim que disponíveis
+- Acompanhar seu histórico de atendimentos, consultas e exames
+- Compartilhar exames e laudos com médicos da sua confiança
+- Receber notificações e lembretes de saúde
+- Atualizar seus dados cadastrais sempre que precisar
+Tudo pensado para tornar sua jornada de cuidado mais simples, organizada e confiável.
+
+Segurança e privacidade
+As informações de saúde são tratadas com confidencialidade e protegidas em ambiente digital seguro, com acesso individual ao aplicativo.
+
+Unidades atendidas pelo aplicativo
+O aplicativo Rede D’Or está disponível para pacientes das unidades Star e Rede D’Or.
+
+Agende consultas e exames, confira resultados, compartilhe e muito mais.</p>
+  </section>
+
+  <!-- segurança dos dados -->
+  <section class="blk safety">
+    <div class="hd"><h2>Segurança dos dados</h2><span class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span></div>
+    <p style="font-size:14px;color:#3c4043;max-width:680px;line-height:1.6;">Sua segurança começa quando você entende como os desenvolvedores coletam e compartilham seus dados. As práticas de segurança e privacidade de dados podem variar de acordo com o uso, a região e a idade. O desenvolvedor forneceu as informações a seguir, que podem ser atualizadas ao longo do tempo.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><div><b>Os dados não são compartilhados com terceiros</b><span class="sub">Saiba mais sobre como os desenvolvedores declaram o compartilhamento</span></div></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><div><b>Este app pode coletar estes tipos de dados</b><span class="sub">Informações pessoais, Saúde e fitness e mais 4</span></div></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><div><b>Os dados são criptografados em trânsito</b></div></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><div><b>Você pode solicitar a exclusão dos dados</b></div></li>
+    </ul>
+  </section>
+
+  <!-- o que há de novo -->
+  <section class="blk news">
+    <div class="hd"><h2>O que há de novo</h2></div>
+    <div class="ver">Novidades desta versão</div>
+    <ol>
+      <li>Nova rede de atendimento disponível no aplicativo, com busca de unidades e médicos para facilitar o acesso aos serviços de saúde.</li>
+      <li>Melhorias de desempenho e estabilidade para uma experiência mais rápida e segura.</li>
+      <li>Correções e otimizações para aprimorar sua navegação.</li>
+    </ol>
+  </section>
+
+  <!-- linha de dados -->
+  <div class="datarow">
+    <div class="datacell"><svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17l4.59-4.58L16 11l-6 6z"/></svg><b>22 de set. de 2026</b><i>Atualizado em</i></div>
+    <div class="datacell"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><b>Medicina</b><i>Categoria</i></div>
+    <div class="datacell"><span class="pegi" style="margin-bottom:8px;">PEGI 3</span><b>3 anos</b><i>Classificação de conteúdo</i></div>
+    <div class="datacell"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><b>Segurança dos dados</b><i>Ver mais detalhes</i></div>
+  </div>
+
+  <!-- suporte -->
+  <section class="blk">
+    <div class="hd"><h2>Suporte do app</h2></div>
+    <div class="suprow"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span class="k">Site: </span><span>rededorsaoluiz.com.br/paciente</span></div>
+    <div class="suprow"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span class="k">Número de telefone: </span><span>+5521985661063</span></div>
+    <div class="suprow"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><span class="k">E-mail para suporte: </span><span>app@rededor.com.br</span></div>
+    <div class="suprow"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span class="k">Política de privacidade </span><span>rededorsaoluiz.com.br/o-grupo/privacidade</span></div>
+  </section>
+
+  <!-- desenvolvedor -->
+  <section class="blk">
+    <div class="hd"><h2>Sobre o desenvolvedor</h2></div>
+    <table class="devt">
+      <tr><td class="k">Nome</td><td>REDE D'OR SAO LUIZ SA</td></tr>
+      <tr><td class="k">E-mail</td><td>areadopaciente@rededor.com.br</td></tr>
+      <tr><td class="k">Endereço</td><td>Av. PRESIDENTE JUSCELINO KUBITSCHEK 1830<br>BLOCO 3 ANDAR 4<br>VILA NOVA CONCEICAO<br>SÃO PAULO - SP<br>04543-011<br>Brazil</td></tr>
+      <tr><td class="k">Telefone</td><td>+55 21 96921-6866</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <span>Política de privacidade • Termos de Serviço</span>
+    <!-- <p style="margin-top:10px;">Página réplica criada para fins pessoais — os termos e marcas pertencem aos seus respectivos titulares.</p> -->
+  </footer>
+</main>
+
+<script>
+// ============================================================
+//  EDITE AQUI: nome exato do arquivo .apk que está na MESMA
+//  pasta (raiz) desta página. Ex.: "rede-dor.apk"
+// ============================================================
+const NOME_DO_APK = "./RedeDor_build.apk";
+
+// capturas de tela reais da página
+const shots = [
+ "DKE3hzbwkg1WYRQE79TFm2A9e7Dvg5FwvEmwPOPtKp-C8SJdbtXrH8fCbF2eYWxtWjAIEe1K11GRTP0HNwiR",
+ "J7YE_Uk_jOUAt1UsWtodKhLdSbL-TIWdvHU7mmkoY22gIEgRbCVm8lA7V_fLs1CveMYlqQkstVOZ1gcVgAbtLg",
+ "T23BomFo1WjvCN98vdA_w2ykFPN7JKBG03UVNJsNF4e7OTzo3Mpwuo3kvp8Pss-nSJZXlxPISIAuqRHmOkmq",
+//  "4Z65mCxje2uJJZA2K_vy8DMJuEU9AQJmyMXATf1nURbJD1MaZmXDdU2Nh2aC_h63wpfb7A8EYXXKTaFTrcOjKA".replace("JJZ","JZ"),
+ "OPZLlqmtkEAZQY41_5DzUyCzMCBlAkhNBv5GzzCmDRBPQGNG9tU6UVomUdgesDBDYtzmR7aRK29b6iICYRIkjw",
+ "OWHtJjuZutZEGK1ESJoc8B2vbTFmBNd-uI6d0wSvQuO97FiXlvlqG5UP9kscLPSWgObIJ9Jwe76qB9JM_X742Q"
+].map(b => "https://play-lh.googleusercontent.com/" + b + "=w400");
+
+const strip = document.getElementById("strip"), dots = document.getElementById("dots");
+shots.forEach((s,i)=>{
+  const im = document.createElement("img"); im.className="shot"; im.src=s;
+  strip.appendChild(im);
+  const d = document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
+});
+strip.addEventListener("scroll", ()=>{
+  const idx = Math.round(strip.scrollLeft / ((strip.scrollWidth)/shots.length));
+  [...dots.children].forEach((d,i)=> d.className = i===Math.min(idx,shots.length-1) ? "on":"");
+});
+
+function doInstall(){
+  const btn=document.getElementById("installBtn"), lbl=document.getElementById("installLbl"), prog=document.getElementById("prog");
+  btn.disabled=true; lbl.textContent="Abaixando";
+  let p=0;
+  const t=setInterval(()=>{
+    p+=Math.random()*16+5;
+    if(p>=100){ p=100; clearInterval(t); baixar(); }
+    prog.style.width=p+"%";
+  },170);
+}
+function baixar(){
+  const a=document.createElement("a");
+  a.href = NOME_DO_APK;      // arquivo na raiz, ao lado desta página
+  a.download = NOME_DO_APK;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>location.reload(), 1200); // volta o botão para "Instalar"
+}
+</script>
+</body>
+</html>
